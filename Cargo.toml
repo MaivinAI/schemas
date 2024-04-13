@@ -1,0 +1,15 @@
+[package]
+name = "edgefirst-schemas"
+description = "Maivin EdgeFirst Services Schemas"
+author = "Au-Zone Technologies <info@au-zone.com>"
+edition = "2021"
+license = "AGPL-3.0"
+readme = "README.md"
+version = "0.0.0"
+homepage = "https://maivin.edgefirst.ai"
+repository = "https://github.com/MaivinAI/schemas"
+documentation = "https://docs.rs/edgefirst-schemas/"
+
+[dependencies]
+serde = "1.0.147"
+serde_derive = "1.0.147"
