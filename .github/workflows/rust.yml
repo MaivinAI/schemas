@@ -45,7 +45,7 @@ jobs:
         with:
           tool: cargo-workspaces
       - name: Parse Version
-        run: echo GIT_VERSION=$(git describe --tags) >> $GITHUB_ENV
+        run: echo GIT_VERSION=$(git describe --tags | cut -b2-) >> $GITHUB_ENV
       - name: Update Version
         run: |
           sed -i "s/0.0.0/$GIT_VERSION/g" Cargo.toml
