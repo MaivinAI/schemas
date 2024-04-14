@@ -18,20 +18,19 @@ permissions:
   id-token: write
 
 jobs:
-  # Always build & lint package.
   build-package:
-    name: Build & verify package
+    name: Build Package
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: hynek/build-and-inspect-python-package@v2
+      - uses: actions/setup-python@v5
         with:
-          skip-wheel: 'true'
+          python-version: '3.10'
+      - run: python setup.py bdist_wheel
 
-  # Upload to real PyPI on GitHub Releases.
   release-pypi:
     name: Publish released package to pypi.org
     runs-on: ubuntu-latest
