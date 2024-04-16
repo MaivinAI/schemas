@@ -113,7 +113,7 @@ pub struct DetectBox2D {
     pub center_y: f32,
     pub width: f32,
     pub height: f32,
-    pub label: String,
+    pub label: u32,
     pub score: f32,
     pub distance: f32,
     pub speed: f32,
