@@ -32,7 +32,6 @@ class Box(IdlStruct, typename='Box'):
     score: float32 = 0 # confidence score for detection
     distance: float32 = 0 # Distance of object (if known)
     speed: float32 = 0 # Speed of object (if known)
-    is_tracked: bool = False # Is the object being tracked
     track: Track = Track() # object tracking, each track includes ID and lifetime information
 
 @dataclass
