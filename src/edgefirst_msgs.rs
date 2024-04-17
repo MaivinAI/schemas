@@ -117,7 +117,6 @@ pub struct DetectBox2D {
     pub score: f32,
     pub distance: f32,
     pub speed: f32,
-    pub is_tracked: bool,
     pub track: DetectTrack,
 }
 #[derive(Serialize, Deserialize, PartialEq, Clone)]
