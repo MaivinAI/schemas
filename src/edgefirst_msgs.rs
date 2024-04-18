@@ -130,6 +130,7 @@ pub struct DetectTrack {
 }
 
 pub mod model_info {
+    pub const RAW: u8 = 0;
     pub const INT8: u8 = 1;
     pub const UINT8: u8 = 2;
     pub const INT16: u8 = 3;
@@ -137,7 +138,10 @@ pub mod model_info {
     pub const INT32: u8 = 5;
     pub const UINT32: u8 = 6;
     pub const FLOAT32: u8 = 7;
-    pub const FLOAT64: u8 = 8;
+    pub const INT64: u8 = 8;
+    pub const UINT64: u8 = 9;
+    pub const FLOAT64: u8 = 10;
+    pub const STRING: u8 = 11;
 }
 
 #[derive(Serialize, Deserialize, PartialEq, Clone)]
