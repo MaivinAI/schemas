@@ -135,13 +135,14 @@ pub mod model_info {
     pub const UINT8: u8 = 2;
     pub const INT16: u8 = 3;
     pub const UINT16: u8 = 4;
-    pub const INT32: u8 = 5;
-    pub const UINT32: u8 = 6;
-    pub const FLOAT32: u8 = 7;
-    pub const INT64: u8 = 8;
-    pub const UINT64: u8 = 9;
-    pub const FLOAT64: u8 = 10;
-    pub const STRING: u8 = 11;
+    pub const FLOAT16: u8 = 5;
+    pub const INT32: u8 = 6;
+    pub const UINT32: u8 = 7;
+    pub const FLOAT32: u8 = 8;
+    pub const INT64: u8 = 9;
+    pub const UINT64: u8 = 10;
+    pub const FLOAT64: u8 = 11;
+    pub const STRING: u8 = 12;
 }
 
 #[derive(Serialize, Deserialize, PartialEq, Clone)]
