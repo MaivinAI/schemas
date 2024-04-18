@@ -1,4 +1,7 @@
-use crate::{builtin_interfaces::Time, std_msgs};
+use crate::{
+    builtin_interfaces::Time,
+    std_msgs::{self, Header},
+};
 use serde_derive::{Deserialize, Serialize};
 
 /// The DmaBuf message is used to transfer a DMA buffer file descriptor between
@@ -124,4 +127,28 @@ pub struct DetectTrack {
     pub id: String,
     pub lifetime: i32,
     pub created: Time,
+}
+
+pub mod model_info {
+    pub const INT8: u8 = 1;
+    pub const UINT8: u8 = 2;
+    pub const INT16: u8 = 3;
+    pub const UINT16: u8 = 4;
+    pub const INT32: u8 = 5;
+    pub const UINT32: u8 = 6;
+    pub const FLOAT32: u8 = 7;
+    pub const FLOAT64: u8 = 8;
+}
+
+#[derive(Serialize, Deserialize, PartialEq, Clone)]
+pub struct ModelInfo {
+    pub header: Header,
+    pub input_shape: Vec<u32>,
+    pub input_type: u8,
+    pub output_shape: Vec<u32>,
+    pub output_type: u8,
+    pub labels: Vec<String>,
+    pub model_type: String,
+    pub model_format: String,
+    pub model_name: String,
 }
