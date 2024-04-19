@@ -1,5 +1,5 @@
 import re
-from setuptools import setup
+from setuptools import setup, find_packages
 from subprocess import Popen, PIPE
 
 
@@ -20,7 +20,7 @@ setup(
     author_email='info@au-zone.com',
     license='AGPL-3.0',
     url='https://maivin.edgefirst.ai',
-    packages=[ 'edgefirst.schemas' ],
+    packages=find_packages(), # [ 'edgefirst.schemas' ],
     install_requires=[ 'pycdr2' ],
     long_description=open('README.md', 'r').read(),
     long_description_content_type='text/markdown',

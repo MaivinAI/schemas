@@ -100,7 +100,7 @@ pub mod radar_cube_dimension {
 }
 
 #[derive(Serialize, Deserialize, PartialEq, Clone)]
-pub struct DetectBoxes2D {
+pub struct Detect {
     pub header: std_msgs::Header,
     pub input_timestamp: Time,
     pub model_time: Time,
@@ -117,7 +117,6 @@ pub struct DetectBox2D {
     pub score: f32,
     pub distance: f32,
     pub speed: f32,
-    pub is_tracked: bool,
     pub track: DetectTrack,
 }
 #[derive(Serialize, Deserialize, PartialEq, Clone)]
