@@ -1,4 +1,4 @@
-# Box Message Interface - edgefirst/Box
+# Box Message Interface - edgefirst/msg/Box
 #
 # The Box message has the box attributes
 

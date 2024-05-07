@@ -1,6 +1,6 @@
-# DMA Buffer Message Interface - edgefirst/dma/buffer
+# DMA Buffer Message Interface - edgefirst/msg/DmaBuffer
 #
-# The dma interface carries raw camera information 
+# The dma interface carries raw camera information
 
 
 std_msgs/Header header        # Metadata including timestamp and coordinate frame

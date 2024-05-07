@@ -1,6 +1,6 @@
-# Detect Message Interface - edgefirst/detect/boxes2d
+# Detect Message Interface - edgefirst/msg/Detect
 #
-# The detect interface carries detection information 
+# The detect interface carries detection information
 
 
 std_msgs/Header header        # Metadata including timestamp and coordinate frame

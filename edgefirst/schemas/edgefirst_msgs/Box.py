@@ -4,7 +4,7 @@
 from dataclasses import dataclass
 from pycdr2 import IdlStruct
 from pycdr2.types import float32
-from .Track import Track
+from . import Track
 
 @dataclass
 class Box(IdlStruct, typename='edgefirst_msgs/Box'):

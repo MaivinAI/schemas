@@ -1,26 +1,16 @@
-from dataclasses import dataclass, field
-import copy
+from dataclasses import dataclass
+from .. import default_field
+from ..std_msgs import Header
+from ..builtin_interfaces import Time
 from pycdr2 import IdlStruct
-from pycdr2.types import float32, int32, uint32, sequence
+from pycdr2.types import float32, int32, sequence
 
-def default_field(obj):
-    return field(default_factory=lambda: copy.copy(obj))
-
-@dataclass
-class Time(IdlStruct, typename='Time'):
-    sec: int32 = 0
-    nanosec: uint32 = 0
 
 @dataclass
 class Track(IdlStruct, typename='Track'):
     id: str = '' # Unique identifier for the object track
     lifetime: int32 = 0 # Number of consecutive frames the object has been tracked
     created: Time = Time() # Time the track was first added
-
-@dataclass
-class Header(IdlStruct, typename='Header'):
-    stamp: Time = Time()
-    frame_id: str = ''
 
 @dataclass
 class Box(IdlStruct, typename='Box'):

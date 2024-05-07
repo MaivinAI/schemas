@@ -10,7 +10,7 @@
 from dataclasses import dataclass
 from pycdr2 import IdlStruct
 from pycdr2.types import sequence, uint8, uint16, uint64, int16, float32
-from ..std_msgs.Header import Header
+from ..std_msgs import Header
 from .. import default_field
 from enum import Enum
 

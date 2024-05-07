@@ -1,20 +1,8 @@
-from dataclasses import dataclass, field
-import copy
+from dataclasses import dataclass
+from ..std_msgs import Header
 from pycdr2 import IdlStruct
-from pycdr2.types import uint32, int32 
+from pycdr2.types import uint32, int32
 
-def default_field(obj):
-    return field(default_factory=lambda: copy.copy(obj))
-
-@dataclass
-class Time(IdlStruct, typename='Time'):
-    sec: int32 = 0
-    nanosec: uint32 = 0
-
-@dataclass
-class Header(IdlStruct, typename='Header'):
-    stamp: Time = Time()
-    frame_id: str = ''
 
 @dataclass
 class DmaBuffer(IdlStruct, typename='DmaBuffer'):

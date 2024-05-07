@@ -1,7 +1,7 @@
 [package]
 name = "edgefirst-schemas"
 description = "Maivin EdgeFirst Services Schemas"
-author = "Au-Zone Technologies <info@au-zone.com>"
+authors = ["Au-Zone Technologies <info@au-zone.com>"]
 edition = "2021"
 license = "AGPL-3.0"
 readme = "README.md"

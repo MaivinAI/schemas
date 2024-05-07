@@ -5,7 +5,7 @@
 from dataclasses import dataclass
 from pycdr2 import IdlStruct
 from pycdr2.types import int32
-from ..builtin_interfaces.Time import Time
+from ..builtin_interfaces import Time
 
 @dataclass
 class Track(IdlStruct, typename='edgefirst_msgs/Track'):

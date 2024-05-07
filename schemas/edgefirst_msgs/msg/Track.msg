@@ -1,4 +1,4 @@
-# Track Message Interface - edgefirst/Track
+# Track Message Interface - edgefirst/msg/Track
 #
 # The Track message has the track attributes
 
