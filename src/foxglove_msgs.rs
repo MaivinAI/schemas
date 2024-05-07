@@ -4,21 +4,21 @@ use crate::{
 };
 use serde_derive::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct FoxgloveCompressedVideo {
     pub header: std_msgs::Header,
     pub data: Vec<u8>,
     pub format: String,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct FoxgloveImageAnnotations {
     pub circles: Vec<FoxgloveCircleAnnotations>,
     pub points: Vec<FoxglovePointAnnotations>,
     pub texts: Vec<FoxgloveTextAnnotations>,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct FoxgloveCircleAnnotations {
     pub timestamp: builtin_interfaces::Time,
     pub position: FoxglovePoint2,
@@ -44,7 +44,7 @@ pub mod point_annotation_type {
     pub const LINE_LIST: u8 = 4;
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct FoxglovePointAnnotations {
     pub timestamp: builtin_interfaces::Time,
     pub type_: u8,
@@ -55,7 +55,7 @@ pub struct FoxglovePointAnnotations {
     pub thickness: f64,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct FoxgloveTextAnnotations {
     pub timestamp: builtin_interfaces::Time,
     pub position: FoxglovePoint2,
@@ -65,13 +65,13 @@ pub struct FoxgloveTextAnnotations {
     pub background_color: FoxgloveColor,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct FoxglovePoint2 {
     pub x: f64,
     pub y: f64,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct FoxgloveColor {
     pub r: f64,
     pub g: f64,

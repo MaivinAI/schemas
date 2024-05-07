@@ -1,13 +1,13 @@
 use crate::builtin_interfaces::Time;
 use serde_derive::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct Header {
     pub stamp: Time,
     pub frame_id: String,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct ColorRGBA {
     pub r: f32,
     pub g: f32,

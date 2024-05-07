@@ -1,7 +1,7 @@
 use crate::{geometry_msgs, std_msgs};
 use serde_derive::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct CameraInfo {
     pub header: std_msgs::Header,
     pub height: u32,
@@ -16,14 +16,14 @@ pub struct CameraInfo {
     pub roi: RegionOfInterest,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct CompressedImage {
     pub header: std_msgs::Header,
     pub format: String,
     pub data: Vec<u8>,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct Image {
     pub header: std_msgs::Header,
     pub height: u32,
@@ -34,7 +34,7 @@ pub struct Image {
     pub data: Vec<u8>,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct IMU {
     pub header: std_msgs::Header,
     pub orientation: geometry_msgs::Quaternion,
@@ -51,7 +51,7 @@ pub mod nav_sat_fix {
     pub const COVARIANCE_TYPE_DIAGONAL_KNOWN: u8 = 2;
     pub const COVARIANCE_TYPE_KNOWN: u8 = 3;
 }
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct NavSatFix {
     pub header: std_msgs::Header,
     pub status: NavSatStatus,
@@ -72,13 +72,13 @@ pub mod nav_sat_status {
     pub const SERVICE_COMPASS: u8 = 4; // includes BeiDou.
     pub const SERVICE_GALILEO: u8 = 8;
 }
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct NavSatStatus {
     pub status: i8,
     pub service: u16,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct PointCloud2 {
     pub header: std_msgs::Header,
     pub height: u32,
@@ -101,7 +101,7 @@ pub mod point_field {
     pub const FLOAT32: u8 = 7;
     pub const FLOAT64: u8 = 8;
 }
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct PointField {
     pub name: String,
     pub offset: u32,
@@ -109,7 +109,7 @@ pub struct PointField {
     pub count: u32,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct RegionOfInterest {
     pub x_offset: u32,
     pub y_offset: u32,

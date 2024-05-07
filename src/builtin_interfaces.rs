@@ -2,13 +2,13 @@ use serde_derive::{Deserialize, Serialize};
 
 const NSEC_IN_SEC: u64 = 1_000_000_000;
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct Time {
     pub sec: i32,
     pub nanosec: u32,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct Duration {
     pub sec: i32,
     pub nanosec: u32,
