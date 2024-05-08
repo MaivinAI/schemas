@@ -1,14 +1,10 @@
-import copy
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pycdr2 import IdlStruct
-from pycdr2.types import sequence, uint8, uint16, uint64, int16, float32
-from ..std_msgs import Header
-from .. import default_field
+from pycdr2.types import sequence, uint8, uint16, uint32, uint64, int16, int32, float32
+from . import default_field
+from .std_msgs import Header
+from .builtin_interfaces import Time
 from enum import Enum
-
-
-def default_field(obj):
-    return field(default_factory=lambda: copy.copy(obj))
 
 
 @dataclass
@@ -61,45 +57,118 @@ class Date(IdlStruct, typename='edgefirst_msgs/Date'):
 
 @dataclass
 class Track(IdlStruct, typename='edgefirst_msgs/Track'):
-    # Unique identifier for the object track (if the object is not tracked then "")
     id: str = ''
-    lifetime: int32 = 0  # Number of consecutive frames the object has been tracked
-    created: Time = Time()  # Time the track was first added
+    """
+    Unique identifier for the object track (if the object is not tracked then "")
+    """
+    lifetime: int32 = 0
+    """
+    Number of consecutive frames the object has been tracked
+    """
+    created: Time = Time()
+    """
+    Time the track was first added
+    """
 
 
 @dataclass
 class Box(IdlStruct, typename='edgefirst_msgs/Box'):
-    center_x: float32 = 0  # Normalized x-coordinate of the center
-    center_y: float32 = 0  # Normalized y-coordinate of the center
-    width: float32 = 0  # Normalized width of the box
-    height: float32 = 0  # Normalized height of the box
-    label: str = ''  # object label
-    score: float32 = 0  # confidence score for detection
-    distance: float32 = 0  # Distance of object (if known)
-    speed: float32 = 0  # Speed of object (if known)
-    track: Track = Track()  # object tracking, each track includes ID and lifetime information
+    center_x: float32 = 0
+    """
+    Normalized x-coordinate of the center
+    """
+    center_y: float32 = 0
+    """
+    Normalized y-coordinate of the center
+    """
+    width: float32 = 0
+    """
+    Normalized width of the box
+    """
+    height: float32 = 0
+    """
+    Normalized height of the box
+    """
+    label: str = ''
+    """
+    object label
+    """
+    score: float32 = 0
+    """
+    confidence score for detection
+    """
+    distance: float32 = 0
+    """
+    Distance of object (if known)
+    """
+    speed: float32 = 0
+    """
+    Speed of object (if known)
+    """
+    track: Track = Track()
+    """
+    object tracking, each track includes ID and lifetime information
+    """
 
 
 @dataclass
 class Detect(IdlStruct, typename='Detect'):
-    header: Header = Header()  # Metadata including timestamp and coordinate frame
-    input_timestamp: Time = Time()  # Timestamp of the input data (e.g., from camera)
-    model_time: Time = Time()  # Timestamp when the object was processed by the model
-    output_time: Time = Time()  # Timestamp when the processed output was available
-    # Array of detected object bounding boxes
+    header: Header = Header()
+    """
+    Metadata including timestamp and coordinate frame
+    """
+    input_timestamp: Time = Time()
+    """
+    Timestamp of the input data (e.g., from camera)
+    """
+    model_time: Time = Time()
+    """
+    Timestamp when the object was processed by the model
+    """
+    output_time: Time = Time()
+    """
+    Timestamp when the processed output was available
+    """
     boxes: sequence[Box] = default_field([])
+    """
+    Array of detected object bounding boxes
+    """
 
 
 @dataclass
 class DmaBuffer(IdlStruct, typename='DmaBuffer'):
-    header: Header = Header()  # Metadata including timestamp and coordinate frame
-    pid: uint32 = 0  # The process id of the service that created the DMA buffer
-    fd: int32 = 0  # The file descriptor of the DMA buffer
-    width: uint32 = 0  # The width of the image in pixels
-    height: uint32 = 0  # The height of the image in pixels
-    stride: uint32 = 0  # The stride of the image in bytes
-    fourcc: uint32 = 0  # The fourcc code of the image
-    length: uint32 = 0  # The length of the DMA buffer in bytes, used to mmap the buffer
+    header: Header = Header()
+    """
+    Metadata including timestamp and coordinate frame
+    """
+    pid: uint32 = 0
+    """
+    The process id of the service that created the DMA buffer
+    """
+    fd: int32 = 0
+    """
+    The file descriptor of the DMA buffer
+    """
+    width: uint32 = 0
+    """
+    The width of the image in pixels
+    """
+    height: uint32 = 0
+    """
+    The height of the image in pixels
+    """
+    stride: uint32 = 0
+    """
+    The stride of the image in bytes
+    """
+    fourcc: uint32 = 0
+    """
+    The fourcc code of the image
+    """
+    length: uint32 = 0
+    """
+    The length of the DMA buffer in bytes, used to mmap the buffer
+    """
 
 
 class RadarMode(Enum):
