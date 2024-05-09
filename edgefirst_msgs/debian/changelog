@@ -1,0 +1,5 @@
+ros-humble-edgefirst-msgs (1.2.1-0jammy) jammy; urgency=high
+
+  Initial Debian packaging of the EdgeFirst ROS2 message interfaces.
+
+ -- Sébastien Taylor <sebastien@au-zone.com>  Thu, 09 May 2024 16:06:11 -0000
