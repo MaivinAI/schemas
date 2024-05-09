@@ -21,3 +21,6 @@ __pycache__/
 build/
 dist/
 venv/
+install/
+log/
+.pytest_cache
