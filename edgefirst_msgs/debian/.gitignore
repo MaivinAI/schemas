@@ -1,0 +1,6 @@
+/files
+/ros-humble-edgefirst-msgs
+
+*.debhelper
+*.log
+*.substvars

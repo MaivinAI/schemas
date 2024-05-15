@@ -24,3 +24,6 @@ venv/
 install/
 log/
 .pytest_cache
+
+.devcontainer.json
+Dockerfile
