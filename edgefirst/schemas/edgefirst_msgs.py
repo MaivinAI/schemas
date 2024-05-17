@@ -29,10 +29,10 @@ class Date(IdlStruct, typename='edgefirst_msgs/Date'):
     calculated.
     """
 
-    header: Header = Header()
+    header: Header = default_field(Header)
     """Message header containing the timestamp and frame id."""
 
-    date: Date = Date()
+    date: Date = default_field(Date)
     """
     The base date from which the local time is calculated.  This could be an
     epoch such as the standard UNIX 1 January 1970 or it could be the current
@@ -40,7 +40,7 @@ class Date(IdlStruct, typename='edgefirst_msgs/Date'):
     are combined into a valid date and time.
     """
 
-    time: Time = Time()
+    time: Time = default_field(Time)
     """
     The time offset from the date.  If the date is the current day then the
     time is the normal time of day.  If the date is an epoch than many days
@@ -65,7 +65,7 @@ class Track(IdlStruct, typename='edgefirst_msgs/Track'):
     """
     Number of consecutive frames the object has been tracked
     """
-    created: Time = Time()
+    created: Time = default_field(Time)
     """
     Time the track was first added
     """
@@ -105,7 +105,7 @@ class Box(IdlStruct, typename='edgefirst_msgs/Box'):
     """
     Speed of object (if known)
     """
-    track: Track = Track()
+    track: Track = default_field(Track)
     """
     object tracking, each track includes ID and lifetime information
     """
@@ -113,19 +113,19 @@ class Box(IdlStruct, typename='edgefirst_msgs/Box'):
 
 @dataclass
 class Detect(IdlStruct, typename='Detect'):
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     Metadata including timestamp and coordinate frame
     """
-    input_timestamp: Time = Time()
+    input_timestamp: Time = default_field(Time)
     """
     Timestamp of the input data (e.g., from camera)
     """
-    model_time: Time = Time()
+    model_time: Time = default_field(Time)
     """
     Timestamp when the object was processed by the model
     """
-    output_time: Time = Time()
+    output_time: Time = default_field(Time)
     """
     Timestamp when the processed output was available
     """
@@ -137,7 +137,7 @@ class Detect(IdlStruct, typename='Detect'):
 
 @dataclass
 class DmaBuffer(IdlStruct, typename='DmaBuffer'):
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     Metadata including timestamp and coordinate frame
     """
@@ -194,7 +194,7 @@ class RadarCube(IdlStruct, typename='edgefirst_msgs/RadarCube'):
     this list.
     """
 
-    header: Header = Header()
+    header: Header = default_field(Header)
     """Message header containing the timestamp and frame id."""
 
     timestamp: uint64 = 0

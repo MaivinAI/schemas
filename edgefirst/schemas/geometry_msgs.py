@@ -19,8 +19,8 @@ class QuaternionStamped(IdlStruct, typename='geometry_msgs/QuaternionStamped'):
     """
     This represents an orientation with reference coordinate frame and timestamp.
     """
-    header: Header = Header()
-    quaternion: Quaternion = Quaternion()
+    header: Header = default_field(Header)
+    quaternion: Quaternion = default_field(Quaternion)
 
 @dataclass
 class Vector3(IdlStruct, typename='geometry_msgs/Vector3'):
@@ -41,31 +41,31 @@ class Vector3Stamped(IdlStruct, typename='geometry_msgs/Vector3Stamped'):
     Note that this follows vector semantics with it always anchored at the origin,
     so the rotational elements of a transform are the only parts applied when transforming.
     """
-    header: Header = Header()
-    vector: Vector3 = Vector3()
+    header: Header = default_field(Header)
+    vector: Vector3 = default_field(Vector3)
 
 @dataclass
 class Accel(IdlStruct, typename='geometry_msgs/Accel'):
     """
     This expresses acceleration in free space broken into its linear and angular parts.
     """
-    linear: Vector3 = Vector3()
-    angular: Vector3 = Vector3()
+    linear: Vector3 = default_field(Vector3)
+    angular: Vector3 = default_field(Vector3)
 
 @dataclass
 class AccelStamped(IdlStruct, typename='geometry_msgs/AccelStamped'):
     """
     An accel with reference coordinate frame and timestamp
     """
-    header: Header = Header()
-    accel: Accel = Accel()
+    header: Header = default_field(Header)
+    accel: Accel = default_field(Accel)
 
 @dataclass
 class AccelWithCovariance(IdlStruct, typename='geometry_msgs/AccelWithCovariance'):
     """
     This expresses acceleration in free space with uncertainty.
     """
-    accel: Accel = Accel()
+    accel: Accel = default_field(Accel)
     
     covariance: array[float64, 36] = default_field([0] * 36)
     """
@@ -80,8 +80,8 @@ class AccelWithCovarianceStamped(IdlStruct, typename='geometry_msgs/AccelWithCov
     """
     This represents an estimated accel with reference coordinate frame and timestamp.
     """
-    header: Header = Header()
-    accel: AccelWithCovariance = AccelWithCovariance()
+    header: Header = default_field(Header)
+    accel: AccelWithCovariance = default_field(AccelWithCovariance)
 
 @dataclass
 class Inertia(IdlStruct, typename='geometry_msgs/Inertia'):
@@ -90,7 +90,7 @@ class Inertia(IdlStruct, typename='geometry_msgs/Inertia'):
     Mass [kg]
     """
 
-    com: Vector3 = Vector3()
+    com: Vector3 = default_field(Vector3)
     """
     Center of mass [m]
     """
@@ -113,8 +113,8 @@ class InertiaStamped(IdlStruct, typename='geometry_msgs/InertiaStamped'):
     """
     An Inertia with a time stamp and reference frame.
     """
-    header: Header = Header()
-    inertia: Inertia = Inertia()
+    header: Header = default_field(Header)
+    inertia: Inertia = default_field(Inertia)
 
 @dataclass
 class Point(IdlStruct, typename='geometry_msgs/Point'):
@@ -143,8 +143,8 @@ class PointStamped(IdlStruct, typename='geometry_msgs/PointStamped'):
     """
     This represents a Point with reference coordinate frame and timestamp
     """
-    header: Header = Header()
-    point: Point = Point()
+    header: Header = default_field(Header)
+    point: Point = default_field(Point)
 
 @dataclass
 class Polygon(IdlStruct, typename='geometry_msgs/Polygon'):
@@ -158,16 +158,16 @@ class PolygonStamped(IdlStruct, typename='geometry_msgs/PolygonStamped'):
     """
     This represents a Polygon with reference coordinate frame and timestamp
     """
-    header: Header = Header()
-    polygon: Polygon = Polygon()
+    header: Header = default_field(Header)
+    polygon: Polygon = default_field(Polygon)
 
 @dataclass
 class Pose(IdlStruct, typename='geometry_msgs/Pose'):
     """
     A representation of pose in free space, composed of position and orientation.
     """
-    position: Point = Point()
-    orientation: Quaternion = Quaternion()
+    position: Point = default_field(Point)
+    orientation: Quaternion = default_field(Quaternion)
 
 @dataclass
 class Pose2D(IdlStruct, typename='geometry_msgs/Pose2D'):
@@ -196,7 +196,7 @@ class PoseArray(IdlStruct, typename='geometry_msgs/PoseArray'):
     """
     An array of poses with a header for global reference.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
 
     poses: sequence[Pose] = default_field([])
 
@@ -205,15 +205,15 @@ class PoseStamped(IdlStruct, typename='geometry_msgs/PoseStamped'):
     """
     A Pose with reference coordinate frame and timestamp
     """
-    header: Header = Header()
-    pose: Pose = Pose()
+    header: Header = default_field(Header)
+    pose: Pose = default_field(Pose)
 
 @dataclass
 class PoseWithCovariance(IdlStruct, typename='geometry_msgs/PoseWithCovariance'):
     """
     This represents a pose in free space with uncertainty.
     """
-    pose: Pose = Pose()
+    pose: Pose = default_field(Pose)
 
     covariance: array[float64, 36] = default_field([0] * 36)
     """
@@ -228,16 +228,16 @@ class PoseWithCovarianceStamped(IdlStruct, typename='geometry_msgs/PoseWithCovar
     """
     This expresses an estimated pose with a reference coordinate frame and timestamp
     """
-    header: Header = Header()
-    pose: PoseWithCovariance = PoseWithCovariance()
+    header: Header = default_field(Header)
+    pose: PoseWithCovariance = default_field(PoseWithCovariance)
 
 @dataclass
 class Transform(IdlStruct, typename='geometry_msgs/Transform'):
     """
     This represents the transform between two coordinate frames in free space.
     """
-    translation: Vector3 = Vector3()
-    rotation: Quaternion = Quaternion()
+    translation: Vector3 = default_field(Vector3)
+    rotation: Quaternion = default_field(Quaternion)
 
 @dataclass
 class TransformStamped(IdlStruct, typename='geometry_msgs/TransformStamped'):
@@ -254,7 +254,7 @@ class TransformStamped(IdlStruct, typename='geometry_msgs/TransformStamped'):
     in a self contained message.
     """
 
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     The frame id in the header is used as the reference frame of this transform.
     """
@@ -264,7 +264,7 @@ class TransformStamped(IdlStruct, typename='geometry_msgs/TransformStamped'):
     The frame id of the child frame to which this transform points.
     """
 
-    transform: Transform = Transform()
+    transform: Transform = default_field(Transform)
     """
     Translation and rotation in 3-dimensions of child_frame_id from header.frame_id.
     """
@@ -274,23 +274,23 @@ class Twist(IdlStruct, typename='geometry_msgs/Twist'):
     """
     This expresses velocity in free space broken into its linear and angular parts.
     """
-    linear: Vector3 = Vector3()
-    angular: Vector3 = Vector3()
+    linear: Vector3 = default_field(Vector3)
+    angular: Vector3 = default_field(Vector3)
 
 @dataclass
 class TwistStamped(IdlStruct, typename='geometry_msgs/TwistStamped'):
     """
     A twist with reference coordinate frame and timestamp
     """
-    header: Header = Header()
-    twist: Twist = Twist()
+    header: Header = default_field(Header)
+    twist: Twist = default_field(Twist)
 
 @dataclass
 class TwistWithCovariance(IdlStruct, typename='geometry_msgs/TwistWithCovariance'):
     """
     This expresses velocity in free space with uncertainty.
     """
-    twist: Twist = Twist()
+    twist: Twist = default_field(Twist)
 
     covariance: array[float64, 36] = default_field([0] * 36)
     """
@@ -305,21 +305,21 @@ class TwistWithCovarianceStamped(IdlStruct, typename='geometry_msgs/TwistWithCov
     """
     This represents an estimated twist with reference coordinate frame and timestamp.
     """
-    header: Header = Header()
-    twist: TwistWithCovariance = TwistWithCovariance()
+    header: Header = default_field(Header)
+    twist: TwistWithCovariance = default_field(TwistWithCovariance)
 
 @dataclass
 class Wrench(IdlStruct, typename='geometry_msgs/Wrench'):
     """
     This represents force in free space, separated into its linear and angular parts.
     """
-    force: Vector3 = Vector3()
-    torque: Vector3 = Vector3()
+    force: Vector3 = default_field(Vector3)
+    torque: Vector3 = default_field(Vector3)
 
 @dataclass
 class WrenchStamped(IdlStruct, typename='geometry_msgs/WrenchStamped'):
     """
     A wrench with reference coordinate frame and timestamp
     """
-    header: Header = Header()
-    wrench: Wrench = Wrench()
+    header: Header = default_field(Header)
+    wrench: Wrench = default_field(Wrench)

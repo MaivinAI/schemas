@@ -12,7 +12,7 @@ class GridCells(IdlStruct, typename='nav_msgs/GridCells'):
     """
     An array of cells in a 2D grid
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
 
     cell_width: float32 = 0
     """
@@ -34,7 +34,7 @@ class MapMetaData(IdlStruct, typename='nav_msgs/MapMetaData'):
     """
     This hold basic information about the characteristics of the OccupancyGrid
     """
-    map_load_time: Time = Time()
+    map_load_time: Time = default_field(Time)
     """
     The time at which the map was loaded
     """
@@ -54,7 +54,7 @@ class MapMetaData(IdlStruct, typename='nav_msgs/MapMetaData'):
     Map height [cells]
     """
 
-    origin: Pose = Pose()
+    origin: Pose = default_field(Pose)
     """
     The origin of the map [m, m, rad].  This is the real-world pose of the
     bottom left corner of cell (0,0) in the map.
@@ -65,9 +65,9 @@ class OccupancyGrid(IdlStruct, typename='nav_msgs/OccupancyGrid'):
     """
     This represents a 2-D grid map
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
 
-    info: MapMetaData = MapMetaData()
+    info: MapMetaData = default_field(MapMetaData)
     """
     MetaData for the map
     """
@@ -89,7 +89,7 @@ class Odometry(IdlStruct, typename='nav_msgs/Odometry'):
     The pose in this message should be specified in the coordinate frame given by header.frame_id
     The twist in this message should be specified in the coordinate frame given by the child_frame_id
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     Includes the frame id of the pose parent.
     """
@@ -99,12 +99,12 @@ class Odometry(IdlStruct, typename='nav_msgs/Odometry'):
     Frame id the pose points to. The twist is in this coordinate frame.
     """
 
-    pose: PoseWithCovariance = PoseWithCovariance()
+    pose: PoseWithCovariance = default_field(PoseWithCovariance)
     """
     Estimated pose that is typically relative to a fixed world frame.
     """
 
-    twist: TwistWithCovariance = TwistWithCovariance()
+    twist: TwistWithCovariance = default_field(TwistWithCovariance)
     """
     Estimated linear and angular velocity relative to child_frame_id.
     """
@@ -114,7 +114,7 @@ class Path(IdlStruct, typename='nav_msgs/Path'):
     """
     An array of poses that represents a Path for a robot to follow.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     Indicates the frame_id of the path.
     """
