@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use crate::{
     builtin_interfaces::Time,
     std_msgs::{self, Header},
@@ -110,6 +112,7 @@ pub struct Detect {
     pub output_time: Time,
     pub boxes: Vec<DetectBox2D>,
 }
+
 #[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct DetectBox2D {
     pub center_x: f32,
@@ -122,11 +125,47 @@ pub struct DetectBox2D {
     pub speed: f32,
     pub track: DetectTrack,
 }
+
 #[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct DetectTrack {
     pub id: String,
     pub lifetime: i32,
     pub created: Time,
+}
+
+pub struct Mask {
+    /// The height of the mask, 0 if this dimension is unused.
+    pub height: u32,
+    /// The width of the mask, 0 if this dimension is unused.
+    pub width: u32,
+    /// The length of the mask, 0 if this dimension is unused.  The length would
+    /// be used in 3D masks to represent the depth.  It could also be used for 2D
+    /// bird's eye view masks along with width instead of height (elevation).
+    pub length: u32,
+    /// The optional encoding for the mask (currently unused).
+    pub encoding: String,
+    /// The segmentation mask data.  The array should be reshaped according to the
+    /// height, width, and length dimensions.  The dimension order is row-major.
+    pub mask: Vec<u8>,
+}
+
+pub struct Model {
+    /// Message header containing the timestamp and frame id.
+    pub header: Header,
+    /// Duration to load inputs into the model.
+    pub input_time: Duration,
+    /// Duration to run the model, not including input/output/decoding.
+    pub model_time: Duration,
+    /// Duration to read the outputs from the model.
+    pub output_time: Duration,
+    /// Duration to decode the outputs from the model, including nms and tracking.
+    pub decode_time: Duration,
+    /// Box detections from the model.  Empty if none detected or if model does
+    /// not support detection.
+    pub boxes: Vec<DetectBox2D>,
+    /// Segmentation masks from the model.  Empty array if model does not generate
+    /// masks.  Generally models will only generate a single mask if they do.
+    pub masks: Vec<Mask>,
 }
 
 pub mod model_info {

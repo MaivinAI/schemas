@@ -3,7 +3,7 @@ from pycdr2 import IdlStruct
 from pycdr2.types import sequence, uint8, uint16, uint32, uint64, int16, int32, float32
 from . import default_field
 from .std_msgs import Header
-from .builtin_interfaces import Time
+from .builtin_interfaces import Duration, Time
 from enum import Enum
 
 
@@ -108,6 +108,76 @@ class Box(IdlStruct, typename='edgefirst_msgs/Box'):
     track: Track = Track()
     """
     object tracking, each track includes ID and lifetime information
+    """
+
+
+@dataclass
+class Mask(IdlStruct, typename='edgefirst_msgs/Mask'):
+    height: uint32 = 0
+    """
+    The height of the mask, 0 if this dimension is unused.
+    """
+
+    width: uint32 = 0
+    """
+    The width of the mask, 0 if this dimension is unused.
+    """
+
+    length: uint32 = 0
+    """
+    The length of the mask, 0 if this dimension is unused.  The length would
+    be used in 3D masks to represent the depth.  It could also be used for 2D
+    bird's eye view masks along with width instead of height (elevation).
+    """
+
+    encoding: str = ''
+    """
+    The optional encoding for the mask (currently unused).
+    """
+
+    mask: sequence[uint8] = default_field([])
+    """
+    The segmentation mask data.  The array should be reshaped according to the
+    height, width, and length dimensions.  The dimension order is row-major.
+    """
+
+
+@dataclass
+class Model(IdlStruct, typename='edgefirst_msgs/Model'):
+    header: Header = Header()
+    """
+    Metadata including timestamp and coordinate frame
+    """
+
+    input_time: Duration = Duration()
+    """
+    Duration to load inputs into the model
+    """
+
+    model_time: Duration = Duration()
+    """
+    Duration to run the model, not including input/output/decoding
+    """
+
+    output_time: Duration = Duration()
+    """
+    Duration to read outputs from the model
+    """
+
+    decode_time: Duration = Duration()
+    """
+    Duration to decode the outputs from the model, including nms and tracking.
+    """
+
+    boxes: sequence[Box] = default_field([])
+    """
+    Array of detected object bounding boxes.
+    """
+
+    mask: sequence[Mask] = default_field([])
+    """
+    Segmentation masks from the model.  Empty array if model does not generate
+    masks.  Generally models will only generate a single mask if they do.
     """
 
 
