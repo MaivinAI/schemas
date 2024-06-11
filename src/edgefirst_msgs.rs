@@ -133,6 +133,7 @@ pub struct DetectTrack {
     pub created: Time,
 }
 
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct Mask {
     /// The height of the mask, 0 if this dimension is unused.
     pub height: u32,
@@ -149,6 +150,7 @@ pub struct Mask {
     pub mask: Vec<u8>,
 }
 
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct Model {
     /// Message header containing the timestamp and frame id.
     pub header: Header,
