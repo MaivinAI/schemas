@@ -99,7 +99,7 @@ class ByteMultiArray(IdlStruct, typename='std_msgs/ByteMultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -146,7 +146,7 @@ class Float32MultiArray(IdlStruct, typename='std_msgs/Float32MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -176,7 +176,7 @@ class Float64MultiArray(IdlStruct, typename='std_msgs/Float64MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -192,7 +192,7 @@ class Header(IdlStruct, typename='std_msgs/Header'):
     This is generally used to communicate timestamped data
     in a particular coordinate frame.
     """
-    stamp: Time = Time()
+    stamp: Time = default_field(Time)
     """
     Two-integer timestamp that is expressed as seconds and nanoseconds.
     """
@@ -222,7 +222,7 @@ class Int8MultiArray(IdlStruct, typename='std_msgs/Int8MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -252,7 +252,7 @@ class Int16MultiArray(IdlStruct, typename='std_msgs/Int16MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -282,7 +282,7 @@ class Int32MultiArray(IdlStruct, typename='std_msgs/Int32MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -312,7 +312,7 @@ class Int64MultiArray(IdlStruct, typename='std_msgs/Int64MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -352,7 +352,7 @@ class Uint8MultiArray(IdlStruct, typename='std_msgs/Uint8MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -382,7 +382,7 @@ class Uint16MultiArray(IdlStruct, typename='std_msgs/Uint16MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -412,7 +412,7 @@ class Uint32MultiArray(IdlStruct, typename='std_msgs/Uint32MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """
@@ -442,7 +442,7 @@ class Uint64MultiArray(IdlStruct, typename='std_msgs/Uint64MultiArray'):
     Please look at the MultiArrayLayout message definition for
     documentation on all multiarrays.
     """
-    layout: MultiArrayLayout = MultiArrayLayout()
+    layout: MultiArrayLayout = default_field(MultiArrayLayout)
     """
     specification of data layout
     """

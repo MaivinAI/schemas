@@ -88,7 +88,7 @@ class BatteryState(IdlStruct, typename='sensor_msgs/BatteryState'):
     The one difference is for style reasons the constants are
     all uppercase not mixed case.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     voltage: float32 = 0 
     """
     Voltage in Volts (Mandatory)
@@ -182,7 +182,7 @@ class CameraInfo(IdlStruct, typename='sensor_msgs/CameraInfo'):
     #######################################################################
     #                     Image acquisition info                          #
     #######################################################################
-    header: Header = Header() 
+    header: Header = default_field(Header) 
     """
     Time of image acquisition, camera coordinate frame ID
     Header timestamp should be acquisition time of image
@@ -291,7 +291,7 @@ class CameraInfo(IdlStruct, typename='sensor_msgs/CameraInfo'):
     binning_x: uint32 = 0
     binning_y: uint32 = 0
 
-    roi: RegionOfInterest = RegionOfInterest()
+    roi: RegionOfInterest = default_field(RegionOfInterest)
     """
     Region of interest (subwindow of full camera resolution), given in
      full resolution (unbinned) image coordinates. A particular ROI
@@ -339,7 +339,7 @@ class CompressedImage(IdlStruct, typename='sensor_msgs/CompressedImage'):
     """
     This message contains a compressed image.
     """
-    header: Header = Header() 
+    header: Header = default_field(Header) 
     """
     Header timestamp should be acquisition time of image
     Header frame_id should be optical frame of camera
@@ -368,7 +368,7 @@ class FluidPressure(IdlStruct, typename='sensor_msgs/FluidPressure'):
     
     This message is not appropriate for force/pressure contact sensors.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     timestamp of the measurement
     frame_id is the location of the pressure sensor
@@ -399,7 +399,7 @@ class Illuminance(IdlStruct, typename='sensor_msgs/Illuminance'):
      - Luminance (nits/light output per area)
      - Irradiance (watt/area), etc.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     timestamp is the time the illuminance was measured
     frame_id is the location and direction of the reading
@@ -419,7 +419,7 @@ class Image(IdlStruct, typename='sensor_msgs/Image'):
     This message contains an uncompressed image
     (0, 0) is at top-left corner of image
     """
-    header: Header = Header() 
+    header: Header = default_field(Header) 
     """
     Header timestamp should be acquisition time of image
     Header frame_id should be optical frame of camera
@@ -478,21 +478,21 @@ class Imu(IdlStruct, typename='sensor_msgs/Imu'):
     If you are interpreting this message, please check for a value of -1 in the first element of each
     covariance matrix, and disregard the associated estimate.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
 
-    orientation: Quaternion = Quaternion()
+    orientation: Quaternion = default_field(Quaternion)
     orientation_covariance: array[float64, 9] = default_field([0] * 9)
     """
     Row major about x, y, z axes
     """
 
-    angular_velocity: Vector3 = Vector3()
+    angular_velocity: Vector3 = default_field(Vector3)
     angular_velocity_covariance: array[float64, 9] = default_field([0] * 9)
     """
     Row major about x, y, z axes
     """
 
-    linear_acceleration: Vector3 = Vector3()
+    linear_acceleration: Vector3 = default_field(Vector3)
     linear_acceleration_covariance: array[float64, 9] = default_field([0] * 9)
     """
     Row major x, y z
@@ -520,7 +520,7 @@ class JointState(IdlStruct, typename='sensor_msgs/JointState'):
     This is the only way to uniquely associate the joint name with the correct
     states.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
 
     name: sequence[str] = default_field([])
     position: sequence[float64] = default_field([])
@@ -532,7 +532,7 @@ class Joy(IdlStruct, typename='sensor_msgs/Joy'):
     """
     Reports the state of a joystick's axes and buttons.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     The timestamp is the time at which data is received from the joystick.
     """
@@ -599,7 +599,7 @@ class LaserScan(IdlStruct, typename='sensor_msgs/LaserScan'):
     array), please find or create a different message, since applications
     will make fairly laser-specific assumptions about this data
     """
-    header: Header = Header() 
+    header: Header = default_field(Header) 
     """
     timestamp in the header is the acquisition time of
     the first ray in the scan.
@@ -662,14 +662,14 @@ class MagneticField(IdlStruct, typename='sensor_msgs/MagneticField'):
     and to use the data a covariance will have to be assumed or gotten from some
     other source.
     """
-    header: Header = Header() 
+    header: Header = default_field(Header) 
     """
     timestamp is the time the
     field was measured
     frame_id is the location and orientation
     of the field measurement
     """
-    magnetic_field: Vector3 = Vector3()
+    magnetic_field: Vector3 = default_field(Vector3)
     """
     x, y, and z components of the
     field vector in Tesla
@@ -705,7 +705,7 @@ class MultiDOFJointState(IdlStruct, typename='sensor_msgs/MultiDOFJointState'):
     This is the only way to uniquely associate the joint name with the correct
     states.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
 
     joint_names: sequence[str] = default_field([])
     transforms: sequence[Transform] = default_field([])
@@ -721,7 +721,7 @@ class MultiEchoLaserScan(IdlStruct, typename='sensor_msgs/MultiEchoLaserScan'):
     array), please find or create a different message, since applications
     will make fairly laser-specific assumptions about this data
     """
-    header: Header = Header() 
+    header: Header = default_field(Header) 
     """
     timestamp in the header is the acquisition time of
     the first ray in the scan.
@@ -816,7 +816,7 @@ class NavSatFix(IdlStruct, typename='sensor_msgs/NavSatFix'):
     Specified using the WGS 84 reference ellipsoid
     """
     
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     header.stamp specifies the ROS time for this measurement (the
            corresponding satellite time may be reported using the
@@ -828,7 +828,7 @@ class NavSatFix(IdlStruct, typename='sensor_msgs/NavSatFix'):
            ellipsoid.
     """
 
-    status: NavSatStatus = NavSatStatus()
+    status: NavSatStatus = default_field(NavSatStatus)
     """
     Satellite fix status information.
     """
@@ -875,7 +875,7 @@ class PointCloud(IdlStruct, typename='sensor_msgs/PointCloud'):
     This message holds a collection of 3d points, plus optional additional
     information about each point.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     Time of sensor data acquisition, coordinate frame ID.
     """
@@ -940,7 +940,7 @@ class PointCloud2(IdlStruct, typename='sensor_msgs/PointCloud2'):
     such as stereo or time-of-flight.
     """
 
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     Time of sensor data acquisition, and the coordinate frame ID (for 3d points).
     """
@@ -997,7 +997,7 @@ class Range(IdlStruct, typename='sensor_msgs/Range'):
     These sensors follow REP 117 and will output -Inf if the object is detected
     and +Inf if the object is outside of the detection range.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     timestamp in the header is the time the ranger
     returned the distance reading
@@ -1045,7 +1045,7 @@ class RelativeHumidity(IdlStruct, typename='sensor_msgs/RelativeHumidity'):
     Defines the ratio of partial pressure of water vapor to the saturated vapor
     pressure at a temperature.
     """
-    header: Header = Header()
+    header: Header = default_field(Header)
     """
     timestamp of the measurement
     frame_id is the location of the humidity sensor
@@ -1067,7 +1067,7 @@ class Temperature(IdlStruct, typename='sensor_msgs/Temperature'):
     """
     Single temperature reading.
     """
-    header: Header = Header() 
+    header: Header = default_field(Header) 
     """
     timestamp is the time the temperature was measured
     frame_id is the location of the temperature reading
@@ -1086,12 +1086,12 @@ class TimeReference(IdlStruct, typename='sensor_msgs/TimeReference'):
     """
     Measurement from an external time source not actively synchronized with the system clock.
     """
-    header: Header = Header() 
+    header: Header = default_field(Header) 
     """
     stamp is system time for which measurement was valid
     frame_id is not used
     """
-    time_ref: Time = Time()
+    time_ref: Time = default_field(Time)
     """
     corresponding time from this external source
     """
