@@ -15,6 +15,9 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   msg/Detect.msg
   msg/DmaBuffer.msg
   msg/LocalTime.msg
+  msg/Mask.msg
+  msg/Model.msg
+  msg/ModelInfo.msg
   msg/RadarCube.msg
   msg/Track.msg
   DEPENDENCIES std_msgs)
