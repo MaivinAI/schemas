@@ -1,5 +1,6 @@
 /files
 /ros-humble-edgefirst-msgs
+/debhelper-build-stamp
 
 *.debhelper
 *.log

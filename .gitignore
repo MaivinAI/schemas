@@ -27,3 +27,6 @@ log/
 
 .devcontainer.json
 Dockerfile
+
+*.deb
+*.ddeb

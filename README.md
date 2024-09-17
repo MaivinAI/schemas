@@ -25,6 +25,24 @@ The navsat and imu services publish GNSS (GPS and friends) and IMU sensor data, 
 
 The recorder service can capture from any topic published with a schema and record into an MCAP file.  The MCAP file can be visualized using Foxglove or exported to various formats using the Maivin Publisher application.  The workflow is documented in the [Maivin Dataset Capture](https://support.deepviewml.com/hc/en-us/articles/24298327848077-Maivin-Dataset-Overview) article.
 
+# ROS2 Debian Packages
+
+Debian/Ubuntu packages are provided to integrate the EdgeFirst Schemas into a standard ROS2 installation.  The package is available under releases and will target the current ROS2 LTS release.
+
+## Building Debian Package
+
+The EdgeFirst Schemas Debian package can be built from these sources, for example if targetting an alternative ROS2 release.
+
+First source your desired ROS2 environment, then build using the colcon command.
+
+```shell
+source /opt/ros/humble/setup.bash
+cd edgefirst_msgs
+fakeroot debian/rules build
+```
+
+The package is then found in the project root as ros-DISTRO-edgefirst-msgs_VERSION_ARCH.deb and can be installed using dpkg -i PACKAGE.deb.
+
 # Licenses
 
 The Maivin schemas and libraries are dual-licensed under the Affero GPL 2.0 license or the Au-Zone AI Middleware Commercial License for customers who have such a license.
