@@ -11,5 +11,5 @@ repository = "https://github.com/MaivinAI/schemas"
 documentation = "https://docs.rs/edgefirst-schemas/"
 
 [dependencies]
-serde = "1.0.147"
-serde_derive = "1.0.147"
+serde = "1.0.210"
+serde_derive = "1.0.210"

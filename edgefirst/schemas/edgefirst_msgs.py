@@ -295,3 +295,33 @@ class RadarCube(IdlStruct, typename='edgefirst_msgs/RadarCube'):
     doubled in size to account for the pair of int16 elements representing
     [real,imaginary].
     """
+
+
+@dataclass
+class RadarInfo(IdlStruct, typename='edgefirst_msgs/RadarInfo'):
+    """
+    The RadarInfo interface carries the current radar configuration and status.
+    """
+
+    header: Header = Header()
+    """Message header containing the timestamp and frame id."""
+
+    center_frequency: str = ''
+    """Radar center frequency band."""
+
+    frequency_sweep: str = ''
+    """The frequency sweep controls the detection range of the radar."""
+
+    range_toggle: str = ''
+    """
+    The range-toggle mode allows the radar to alternate between various
+    frequency sweep configurations.  Applications must handle range toggling as targets will not be consistent between messages as the frequency alternates.
+    """
+
+    detection_sensitivity: str = ''
+    """
+    The detection sensitivity controls the sensitivity to recognize a target.
+    """
+
+    cube: bool = False
+    """True if the radar is configured to output radar cubes."""
