@@ -104,6 +104,26 @@ pub mod radar_cube_dimension {
     pub const SEQUENCE: u8 = 6;
 }
 
+/// This interface carries Radar Information related to the device configuration.
+#[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
+pub struct RadarInfo {
+    /// Message header containing the timestamp and frame id.
+    pub header: std_msgs::Header,
+    /// Radar center frequency band.
+    pub center_frequency: String,
+    /// The frequency sweep controls the detection range of the radar.
+    pub frequency_sweep: String,
+    /// The range-toggle mode allows the radar to alternate between various
+    /// frequency sweep configurations.  Applications must handle range
+    /// toggling as targets will not be consistent between messages as the
+    /// frequency alternates between sweeps.
+    pub range_toggle: String,
+    /// The detection sensitivity controls the sensitivity to recognize a target.
+    pub detection_sensitivity: String,
+    /// True if the radar is configured to output radar cubes.
+    pub cube: bool,
+}
+
 #[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
 pub struct Detect {
     pub header: std_msgs::Header,
