@@ -19,18 +19,9 @@ jobs:
       - name: Parse Version
         run: echo GIT_VERSION=$(git describe --tags | cut -b2-) >> $GITHUB_ENV
       - name: Build AMD64
-        uses: docker/build-push-action@v6
-        with:
-          platforms: linux/amd64
-          target: debian
-          push: false
-          tags: maivin-schemas:${{ env.GIT_VERSION }}-${{ github.run_number }}_amd64
-      - name: Archive AMD64
-        uses: addnab/docker-run-action@v3
-        with:
-          image: maivin-schemas:${{ env.GIT_VERSION }}-${{ github.run_number }}_amd64
-          options: --rm -v ${{ github.workspace }}:/pkg
-          run: sh -c 'cp -f *.deb /pkg'
+        run: |
+          docker build . --target debian --tag maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64 --platform linux/amd64 .
+          docker run --rm -v ${PWD}:/pkg maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64 cp -f *.deb /pkg
       - uses: actions/upload-artifact@v4
         with:
           name: deb
