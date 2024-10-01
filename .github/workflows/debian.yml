@@ -21,14 +21,13 @@ jobs:
       - name: Build AMD64
         uses: docker/build-push-action@v6
         with:
-          context: .
           platforms: linux/amd64
           push: false
-          tags: maivin-schemas:${{ env.GIT_VERSION }}-${{ env.GITHUB_RUN_NUMBER }}_amd64
+          tags: maivin-schemas:${{ env.GIT_VERSION }}-${{ github.run_number }}_amd64
       - name: Archive AMD64
         uses: addnab/docker-run-action@v3
         with:
-          image: maivin-schemas:${{ env.GIT_VERSION }}-${{ env.GITHUB_RUN_NUMBER }}_amd64
+          image: maivin-schemas:${{ env.GIT_VERSION }}-${{ github.run_number }}_amd64
           options: --rm -v $PWD:/pkg
           run: sh -c 'cp -f *.deb /pkg'
       - uses: actions/upload-artifact@v4
