@@ -22,7 +22,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile
           platforms: linux/amd64
           push: false
           tags: maivin-schemas:${{ env.GIT_VERSION }}-${{ env.GITHUB_RUN_NUMBER }}_amd64
