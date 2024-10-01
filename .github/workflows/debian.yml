@@ -28,7 +28,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: maivin-schemas:${{ env.GIT_VERSION }}-${{ github.run_number }}_amd64
-          options: --rm -v $PWD:/pkg
+          options: --rm -v ${{ github.workspace }}:/pkg
           run: sh -c 'cp -f *.deb /pkg'
       - uses: actions/upload-artifact@v4
         with:
