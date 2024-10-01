@@ -18,7 +18,7 @@ jobs:
     env:
       RUSTV: nightly-2024-04-09
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install
         run: |
           rustup toolchain install $RUSTV
@@ -30,7 +30,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Run tests
       run: cargo test --verbose
 
@@ -40,7 +40,7 @@ jobs:
     needs: [test, format]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: taiki-e/install-action@v2
         with:
           tool: cargo-workspaces
