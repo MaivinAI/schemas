@@ -21,8 +21,7 @@ jobs:
       - name: Build AMD64
         run: |
           docker build . --target debian --tag maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64 --platform linux/amd64
-          docker run --rm -v ${PWD}:/pkg maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64 ls -l
-          docker run --rm -v ${PWD}:/pkg maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64 cp -f *.deb /pkg
+          docker run --rm -v ${PWD}:/pkg maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64 sh -c 'cp -f *.deb /pkg'
       - uses: actions/upload-artifact@v4
         with:
           name: deb
