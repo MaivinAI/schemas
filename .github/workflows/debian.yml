@@ -18,8 +18,8 @@ jobs:
         run: echo GIT_VERSION=$(git describe --tags | cut -b2-) >> $GITHUB_ENV
       - name: Build AMD64
         run: |
-          docker build . --platform linux/amd64 --tag maivin-schemas:$GIT_VERSION-$GITHUB_RUN_NUMBER_amd64
-          docker run --rm -v $PWD:/pkg maivin-schemas:GIT_VERSION-$GITHUB_RUN_NUMBER_amd64 sh -c 'cp -f *.deb /pkg'
+          docker build . --platform linux/amd64 --tag maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64
+          docker run --rm -v $PWD:/pkg maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64 sh -c 'cp -f *.deb /pkg'
       - uses: actions/upload-artifact@v4
         with:
           name: deb
