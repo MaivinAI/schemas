@@ -18,6 +18,8 @@ jobs:
           fetch-depth: 0
       - name: Parse Version
         run: echo GIT_VERSION=$(git describe --tags | cut -b2-) >> $GITHUB_ENV
+      - run: ls
+      - run: pwd
       - name: Build AMD64
         uses: docker/build-push-action@v6
         with:
