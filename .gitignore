@@ -26,7 +26,6 @@ log/
 .pytest_cache
 
 .devcontainer.json
-Dockerfile
 
 *.deb
 *.ddeb
