@@ -19,11 +19,19 @@ jobs:
       - name: Parse Version
         run: echo GIT_VERSION=$(git describe --tags | cut -b2-) >> $GITHUB_ENV
       - name: Build AMD64
-        run: |
-          echo "GIT_VERSION=${GIT_VERSION}"
-          git describe --tags | cut -b2-
-          docker build . --platform linux/amd64 --tag maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64
-          docker run --rm -v $PWD:/pkg maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64 sh -c 'cp -f *.deb /pkg'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64
+          push: false
+          tags: maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64
+      - name: Archive AMD64
+        uses: addnab/docker-run-action@v3
+        with:
+          image: maivin-schemas:${GIT_VERSION}-${GITHUB_RUN_NUMBER}_amd64
+          options: --rm -v $PWD:/pkg
+          run: sh -c 'cp -f *.deb /pkg'
       - uses: actions/upload-artifact@v4
         with:
           name: deb
