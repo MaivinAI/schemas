@@ -30,3 +30,5 @@ Dockerfile
 
 *.deb
 *.ddeb
+
+.vscode-ctags
