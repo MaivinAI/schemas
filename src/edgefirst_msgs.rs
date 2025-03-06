@@ -163,11 +163,13 @@ pub struct Mask {
     /// be used in 3D masks to represent the depth.  It could also be used for 2D
     /// bird's eye view masks along with width instead of height (elevation).
     pub length: u32,
-    /// The optional encoding for the mask (currently unused).
+    /// The optional encoding for the mask ("" for no compression, or "zstd" for zstd compression).
     pub encoding: String,
     /// The segmentation mask data.  The array should be reshaped according to the
     /// height, width, and length dimensions.  The dimension order is row-major.
     pub mask: Vec<u8>,
+    /// If the mask is to be matched with a box for instance segmentation
+    pub boxed: bool,
 }
 
 #[derive(Serialize, Deserialize, PartialEq, Clone, Debug)]
