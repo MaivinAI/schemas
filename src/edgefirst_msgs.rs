@@ -1,7 +1,5 @@
-use std::time::Duration;
-
 use crate::{
-    builtin_interfaces::Time,
+    builtin_interfaces::{Duration, Time},
     std_msgs::{self, Header},
 };
 use serde_derive::{Deserialize, Serialize};

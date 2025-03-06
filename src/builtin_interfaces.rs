@@ -1,3 +1,5 @@
+use std::time::Duration as Dur;
+
 use serde_derive::{Deserialize, Serialize};
 
 const NSEC_IN_SEC: u64 = 1_000_000_000;
@@ -34,5 +36,14 @@ impl Time {
 impl From<Time> for u64 {
     fn from(time: Time) -> Self {
         time.to_nanos()
+    }
+}
+
+impl From<Dur> for Duration {
+    fn from(dur: Dur) -> Self {
+        Duration {
+            sec: dur.as_secs() as i32,
+            nanosec: dur.subsec_nanos(),
+        }
     }
 }
