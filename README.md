@@ -1,3 +1,5 @@
+NOTE: Repository has moved to https://github.com/EdgeFirstAI/schemas
+
 # Maivin EdgeFirst Services Schemas
 
 This repository hosts the messaging schemas for the Maivin EdgeFirst Services.  This includes the custom schemas as well as the ROS2 Common Interfaces and Foxglove schemas used by Maivin EdgeFirst Services.  The Maivin EdgeFirst Services communicate over the Zenoh messaging framework and follow a ROS2 styled design.  Maivin EdgeFirst Services do not directly work with ROS2 but can be bridged to a system running ROS2 through the Zenoh ROS2 DDS Bridge.  Where relevant we base our ROS2 compatibility on the [ROS2 Humble Hawksbill](https://docs.ros.org/en/rolling/Releases/Release-Humble-Hawksbill.html) LTS release.
