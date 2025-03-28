@@ -6,7 +6,7 @@ uint32 height       # The height of the mask
 uint32 width        # The width of the mask
 uint32 length       # The length of the mask when using 3D masks.
 
-string encoding     # The optional encoding for the mask (currently unused).
+string encoding     # The optional encoding for the mask ("" for no compression, or "zstd" for zstd compression).
 
 uint8[] mask        # The segmentation mask
 
